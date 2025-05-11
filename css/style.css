@@ -1,4 +1,4 @@
-/* --- CSS Reset / Normalize --- */
+/* Reset básico */
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -6,556 +6,278 @@
 }
 
 body {
-    font-family: 'Roboto', 'Arial', sans-serif; /* Fuente legible */
+    font-family: sans-serif;
     line-height: 1.6;
-    color: var(--text-color); /* Gris oscuro para el texto */
-    background-color: var(--background-light); /* Fondo muy claro */
-    overflow-x: hidden; /* Evita scroll horizontal */
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-/* --- Variables de Color --- */
-:root {
-    --primary-color: #0a1f44; /* Azul Marino Oscuro */
-    --secondary-color: #e0b97b; /* Dorado/Cobrizo (para acentos) */
-    --text-color: #333;
-    --text-color-light: #f8f8f8;
-    --background-light: #f8f8f8;
-    --background-dark: #ffffff; /* Blanco puro */
-    --border-color: #ddd; /* Gris claro para bordes suaves */
-    --shadow-color: rgba(0, 0, 0, 0.1); /* Sombra sutil */
-}
-
-/* --- Estilos Generales y Layout Base --- */
 .container {
-    width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 20px;
 }
 
-.section-padding {
-    padding: 60px 0; /* Espacio vertical para secciones */
-}
-
-.section-light {
-    background-color: var(--background-light);
-}
-
-.section-cta {
-    background-color: var(--primary-color);
-    color: var(--text-color-light);
-}
-
+/* Tipografía */
 h1, h2, h3 {
-    color: var(--primary-color); /* Títulos en azul marino */
-    margin-bottom: 20px;
-    line-height: 1.2;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 1em;
 }
 
-h1 { font-size: 2.5em; }
-h2 { font-size: 2em; }
-h3 { font-size: 1.5em; }
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
 
 p {
-    margin-bottom: 15px;
+    margin-bottom: 1.5em;
+    color: #555;
 }
 
 ul {
-    list-style: none; /* Elimina viñetas por defecto */
-    margin-bottom: 20px;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5em;
 }
 
 ul li {
-    margin-bottom: 10px;
-    padding-left: 25px; /* Espacio para icono si se usa */
-    position: relative;
+    margin-bottom: 0.75em;
+    color: #555;
 }
 
-ul li i.fas {
-    position: absolute;
-    left: 0;
-    top: 5px; /* Ajuste vertical */
-    color: var(--secondary-color); /* Color del icono */
+/* Layout */
+header {
+    background-color: #fff;
+    padding: 1em 0;
+    border-bottom: 1px solid #ddd;
 }
 
-
-/* --- Botones --- */
-.btn {
-    display: inline-block;
-    padding: 12px 25px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s ease, opacity 0.3s ease;
-}
-
-.btn-primary {
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
-    border: 2px solid var(--secondary-color);
-}
-
-.btn-primary:hover {
-    background-color: #c9a568; /* Tono más oscuro al pasar el ratón */
-    opacity: 0.9;
-}
-
-.btn-secondary {
-    background-color: var(--text-color-light);
-    color: var(--primary-color);
-    border: 2px solid var(--text-color-light);
-}
-
-.btn-secondary:hover {
-     background-color: #eee; /* Tono más oscuro al pasar el ratón */
-    opacity: 0.9;
-}
-
-.btn-large {
-    padding: 15px 30px;
-    font-size: 1.1em;
-}
-
-
-/* --- Layouts con Grid y Flexbox --- */
-.grid-layout {
-    display: grid;
-    gap: 20px; /* Espacio entre ítems */
-}
-
-.grid-col-2 {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 2 columnas en escritorio, se adapta a 1 en móvil */
-}
-
-.grid-col-3 {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 3 columnas en escritorio, se adapta */
-}
-
-.align-items-center {
-    align-items: center; /* Centra verticalmente en grid/flex */
-}
-
-/* --- Header y Navegación --- */
-.site-header {
-    background-color: var(--background-dark);
-    box-shadow: var(--shadow-color) 0 2px 4px;
-    padding: 15px 0;
-    position: sticky; /* Menú pegajoso al hacer scroll */
-    top: 0;
-    z-index: 1000;
-}
-
-.header-content {
+header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.site-logo img {
-    max-height: 50px; /* Tamaño del logo */
+.logo {
+    display: flex;
+    align-items: center;
 }
 
-.main-nav ul {
-    display: flex; /* Menú horizontal en escritorio */
-    gap: 20px;
-    list-style: none;
-    margin: 0;
+.logo img {
+    max-height: 50px;
+    margin-right: 15px;
 }
 
-.main-nav a {
+.main-nav .nav-links {
+    display: none; /* Ocultar en pantallas pequeñas */
+}
+
+.main-nav .nav-links li {
+    display: inline;
+    margin-left: 20px;
+}
+
+.main-nav .nav-links a {
     text-decoration: none;
-    color: var(--primary-color);
+    color: #333;
     font-weight: bold;
-    padding: 5px 0;
     transition: color 0.3s ease;
 }
 
-.main-nav a:hover {
-    color: var(--secondary-color);
+.main-nav .nav-links a:hover {
+    color: #5dade2;
 }
 
-.menu-toggle {
-    display: none; /* Oculto por defecto en escritorio */
+.hamburger {
     background: none;
     border: none;
-    font-size: 24px;
+    color: #333;
+    font-size: 1.5em;
     cursor: pointer;
-    color: var(--primary-color);
+    display: block; /* Mostrar en pantallas pequeñas */
 }
 
-/* --- Hero Section --- */
-.hero-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/imagen[NUMERO_IMAGEN_FONDO_HERO].webp') no-repeat center center/cover; /* IMPORTANTE: Reemplaza [NUMERO_IMAGEN_FONDO_HERO] */
-    color: var(--text-color-light);
-    padding: 100px 0; /* Más espacio para la sección principal */
+.hamburger:focus {
+    outline: none;
 }
 
-.hero-content {
+main {
+    padding: 40px 0;
+}
+
+.hero {
+    background-color: #e0f2f7;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.hero .container {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 40px;
 }
 
-.hero-text {
-    flex: 1; /* Permite que el texto ocupe espacio disponible */
-}
-
-.hero-text h1 {
-    color: var(--text-color-light); /* Título principal en blanco */
-    margin-bottom: 15px;
-}
-
-.hero-text p {
-    font-size: 1.1em;
-    margin-bottom: 20px;
-}
-
-.course-meta {
-    margin-top: 20px;
-    margin-bottom: 30px;
-    font-size: 0.9em;
-}
-
-.course-meta .rating i.fas {
-    color: gold; /* Estrellas doradas */
-    margin-right: 2px;
-}
-.course-meta .rating span {
-    font-weight: bold;
-    margin-left: 5px;
-}
-.course-meta p {
-     margin-bottom: 5px;
-     font-size: 1em;
-}
-.course-meta i.fas {
-    margin-right: 8px;
-    color: var(--secondary-color); /* Iconos meta en color secundario */
-}
-
-
-.hero-image {
-    flex: 1;
-    text-align: center;
-}
-
-.hero-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px; /* Bordes suaves en la imagen */
-    box-shadow: var(--shadow-color) 0 5px 15px; /* Sombra sutil */
-}
-
-/* --- Sections Specific Styles --- */
-.goal-list i.fas,
-.temario-list i.fas {
-     top: 0px; /* Ajuste de posición vertical del icono en listas */
-}
-
-.temario-list {
-    column-count: 1; /* Lista de temario en una columna por defecto */
-}
-
-.feature-section article {
-    background-color: var(--background-dark);
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: var(--shadow-color) 0 2px 5px;
-    text-align: center;
-    transition: transform 0.3s ease; /* Animación suave al pasar el ratón */
-}
-
-.feature-section article:hover {
-    transform: translateY(-5px); /* Efecto lift al pasar el ratón */
-}
-
-.feature-section article i.fas {
-    font-size: 3em;
-    color: var(--secondary-color);
-    margin-bottom: 15px;
-}
-
-.feature-section article h3 {
-    margin-top: 0;
-    color: var(--primary-color);
-}
-
-.feature-section article p {
-    color: var(--text-color);
-}
-
-
-/* --- Pricing / CTA Section --- */
-.section-cta h2 {
-    color: var(--text-color-light); /* Título en CTA en blanco */
-}
-
-.price-original {
-    text-decoration: line-through;
-    font-size: 1.2em;
-    opacity: 0.8;
-    margin-bottom: 5px;
-}
-
-.price-offer {
-    font-size: 2.5em;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.price-highlight {
-    color: var(--secondary-color); /* Resaltar el precio de oferta */
-}
-
-.price-note {
-    font-size: 1em;
-    margin-bottom: 20px;
-    opacity: 0.9;
-}
-
-.urgency-message {
-    font-size: 1.1em;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #ffe066; /* Un amarillo para mensajes de urgencia */
-}
-.urgency-message i.fas {
-    margin-right: 8px;
-    color: #ff6b6b; /* Rojo para iconos de urgencia */
-}
-
-.click-note {
-    font-size: 0.9em;
-    margin-top: 10px;
-    opacity: 0.9;
-}
-
-
-/* --- Guarantee Section --- */
-.guarantee-image img {
-    max-width: 180px; /* Tamaño para la imagen/sello de garantía */
-    height: auto;
-    display: block;
-    margin: 0 auto; /* Centrar la imagen en móvil */
-}
-
-.guarantee-text h2 {
-    color: var(--primary-color);
-}
-
-
-/* --- Certificate Section --- */
-.certificate-image img {
-    max-width: 400px; /* Tamaño máximo para el certificado */
+.hero img {
+    max-width: 80%;
     height: auto;
     margin-top: 20px;
     border-radius: 8px;
-    box-shadow: var(--shadow-color) 0 5px 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* --- Steps Section --- */
-.steps-list {
+.services {
+    padding: 40px 0;
+    background-color: #fff;
+}
+
+.services ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.services li {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.about-us {
+    padding: 40px 0;
+    background-color: #e8f5e9;
+}
+
+.about-us .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about-us img {
+    max-width: 80%;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact {
+    padding: 40px 0;
+    background-color: #fff;
     text-align: center;
 }
 
-.steps-list li {
-     list-style: none;
-     padding: 20px;
-     background-color: var(--background-dark);
-     border-radius: 8px;
-     box-shadow: var(--shadow-color) 0 2px 5px;
-     position: relative;
-     padding-top: 70px; /* Espacio para el icono arriba */
-     margin-bottom: 20px; /* Espacio entre ítems en móvil */
-     padding-left: 20px; /* Reset padding-left de ul li general */
-}
-
-.steps-list li .step-icon {
-    font-size: 2.5em;
-    color: var(--secondary-color);
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.steps-list li img {
-    max-width: 80px; /* Tamaño para iconos de seguridad/pago */
+.contact img {
+    max-width: 60%;
     height: auto;
-    margin-top: 15px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-
-/* --- FAQ Section --- */
-.faq-list {
-    list-style: none;
-    padding: 0;
-}
-
-.faq-list li {
-    background-color: var(--background-dark);
-    padding: 15px 20px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid var(--border-color);
-    cursor: pointer; /* Indica que es interactivo (si se añade JS para expandir/colapsar) */
-    transition: background-color 0.3s ease;
-    padding-left: 20px; /* Reset padding-left de ul li general */
-    position: static; /* Reset position de ul li general */
-}
-
-.faq-list li:hover {
-    background-color: #f0f0f0;
-}
-/* Considerar añadir clases .active y estilos para respuestas si se implementa acordeón JS */
-
-
-/* --- Tally.so Embed Section --- */
-.tally-form-embed {
-    margin-top: 30px;
-    /* Añadir estilos para el contenedor del formulario si es necesario */
-    /* Por ejemplo, un borde, padding, etc. */
-}
-
-
-/* --- Footer --- */
-.site-footer {
-    background-color: var(--primary-color);
-    color: var(--text-color-light);
+footer {
+    background-color: #333;
+    color: #fff;
     padding: 20px 0;
     text-align: center;
-    font-size: 0.9em;
 }
 
-.footer-content p {
-    margin: 5px 0;
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.site-footer a {
-    color: var(--text-color-light);
+footer ul {
+    padding: 0;
+    margin: 0;
+}
+
+footer li {
+    display: inline;
+    margin-left: 15px;
+}
+
+footer a {
+    color: #fff;
     text-decoration: none;
-    transition: text-decoration 0.3s ease;
+    transition: color 0.3s ease;
 }
 
-.site-footer a:hover {
-    text-decoration: underline;
+footer a:hover {
+    color: #5dade2;
 }
 
-
-/* --- Clases para JS (Ocultar/Mostrar Menú) --- */
-.main-nav.active {
-    display: block; /* Mostrar menú en móvil cuando está activo */
-}
-
-/* --- Media Queries para Responsividad --- */
-
-/* Tablet y Móviles */
+/* Media Queries */
 @media (max-width: 768px) {
-    h1 { font-size: 2em; }
-    h2 { font-size: 1.7em; }
-    h3 { font-size: 1.3em; }
-
-    .section-padding {
-        padding: 40px 0;
+    .logo h1 {
+        font-size: 1.8em;
     }
 
-    .hero-content {
-        flex-direction: column; /* Apila texto e imagen en móvil */
-        text-align: center;
-        gap: 30px;
-    }
-
-    .hero-text {
-        order: 2; /* Pone el texto debajo de la imagen si se desea */
-    }
-
-    .hero-image {
-         order: 1; /* Pone la imagen arriba del texto si se desea */
-    }
-
-
-    /* Navegación Móvil */
-    .menu-toggle {
-        display: block; /* Muestra el botón de hamburguesa */
-    }
-
-    .main-nav {
-        display: none; /* Oculta el menú por defecto */
+    .main-nav .nav-links {
+        display: none;
         position: absolute;
-        top: 80px; /* Ajusta basado en la altura del header */
+        top: 100%;
         left: 0;
-        right: 0;
-        background-color: var(--background-dark);
-        box-shadow: var(--shadow-color) 0 4px 8px;
-        z-index: 999;
-        padding: 10px 0;
-    }
-
-    .main-nav.active {
-        display: block; /* Muestra el menú cuando la clase 'active' está presente */
-    }
-
-    .main-nav ul {
-        flex-direction: column; /* Apila los ítems del menú */
-        align-items: center;
-        gap: 10px;
-    }
-
-    .main-nav a {
-        padding: 10px 20px;
-        display: block; /* Permite que cada enlace ocupe su propia línea */
+        background-color: #fff;
         width: 100%;
         text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 10;
     }
 
-     .grid-col-2,
-     .grid-col-3 {
-         grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
-     }
-
-     .feature-section article,
-     .steps-list li {
-         margin-bottom: 20px; /* Añade espacio entre tarjetas apiladas */
-     }
-
-     .guarantee-image img {
-         margin-bottom: 20px; /* Espacio entre imagen y texto apilados */
-     }
-
-     .temario-list {
-        column-count: 1; /* Asegura una columna en móvil */
+    .main-nav .nav-links.active {
+        display: block;
     }
 
-    .steps-list li {
-        padding-top: 70px; /* Ajusta padding si el icono cambia de tamaño */
-        padding-left: 20px; /* Reset padding-left */
+    .main-nav .nav-links li {
+        display: block;
+        margin: 15px 0;
     }
-}
 
-/* Móviles pequeños */
-@media (max-width: 480px) {
-     h1 { font-size: 1.8em; }
-     h2 { font-size: 1.5em; }
-     h3 { font-size: 1.2em; }
+    .hamburger {
+        display: block;
+    }
 
-     .section-padding {
-         padding: 30px 0;
-     }
+    .hero .container {
+        text-align: center;
+    }
 
-     .btn {
-         padding: 10px 20px;
-         font-size: 1em;
-     }
+    .hero img {
+        max-width: 100%;
+    }
 
-     .btn-large {
-        padding: 12px 25px;
-        font-size: 1em;
-     }
+    .about-us .container {
+        text-align: center;
+    }
 
-     .price-offer {
-         font-size: 2em;
-     }
+    .about-us img {
+        max-width: 100%;
+    }
 
-     .course-meta p {
-         font-size: 0.9em;
-     }
+    .contact img {
+        max-width: 100%;
+    }
+
+    footer .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    footer ul {
+        margin-top: 10px;
+    }
+
+    footer li {
+        margin: 0 10px;
+    }
 }
